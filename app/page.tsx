@@ -196,7 +196,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
       <header className="bg-black text-white p-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -211,7 +211,7 @@ export default function Home() {
               onClick={() => setActiveTab('sightings')}
               className={`px-4 py-2 rounded ${
                 activeTab === 'sightings' 
-                  ? 'bg-white text-black' 
+                  ? 'bg-orange-500 text-white' 
                   : 'hover:bg-gray-800'
               }`}
             >
@@ -221,7 +221,7 @@ export default function Home() {
               href="/post"
               className={`px-4 py-2 rounded ${
                 activeTab === 'post' 
-                  ? 'bg-white text-black' 
+                  ? 'bg-orange-500 text-white' 
                   : 'hover:bg-gray-800'
               }`}
             >
@@ -233,17 +233,17 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto p-6">
-        <div className="bg-white rounded-lg shadow-lg p-6">
+        <div className="bg-gray-800 rounded-lg shadow-lg p-6">
           {loading && (
             <div className="text-center py-8">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black mx-auto"></div>
-              <p className="mt-4 text-gray-600">Loading sightings data...</p>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto"></div>
+              <p className="mt-4 text-gray-300">Loading sightings data...</p>
             </div>
           )}
 
           {error && (
             <div className="text-center py-8">
-              <p className="text-red-600">Error: {error}</p>
+              <p className="text-red-400">Error: {error}</p>
             </div>
           )}
 
@@ -251,28 +251,28 @@ export default function Home() {
             <>
               {/* Sightings Stats */}
               <section className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">Sightings Stats</h2>
+                <h2 className="text-2xl font-bold mb-4 text-white">Sightings Stats</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-gray-600">Total Sightings</h3>
-                    <p className="text-2xl font-bold">{stats.totalSightings.toLocaleString()}</p>
+                  <div className="bg-gray-700 p-4 rounded-lg">
+                    <h3 className="font-semibold text-gray-300">Total Sightings</h3>
+                    <p className="text-2xl font-bold text-white">{stats.totalSightings.toLocaleString()}</p>
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-gray-600">Most Recent Sighting</h3>
-                    <p className="text-2xl font-bold">{stats.mostRecent}</p>
+                  <div className="bg-gray-700 p-4 rounded-lg">
+                    <h3 className="font-semibold text-gray-300">Most Recent Sighting</h3>
+                    <p className="text-2xl font-bold text-white">{stats.mostRecent}</p>
                   </div>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-gray-600">Most Ghostly City</h3>
-                    <p className="text-2xl font-bold">{stats.mostGhostlyCity}</p>
+                  <div className="bg-gray-700 p-4 rounded-lg">
+                    <h3 className="font-semibold text-gray-300">Most Ghostly City</h3>
+                    <p className="text-2xl font-bold text-white">{stats.mostGhostlyCity}</p>
                   </div>
                 </div>
               </section>
 
               {/* Sightings Map */}
               <section className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">
+                <h2 className="text-2xl font-bold mb-4 text-white">
                   Sightings Map 
-                  <span className="text-sm font-normal text-gray-600 ml-2">
+                  <span className="text-sm font-normal text-gray-300 ml-2">
                     ({filteredSightings.length} sightings)
                   </span>
                 </h2>
@@ -281,27 +281,27 @@ export default function Home() {
 
               {/* Search Bar */}
               <section className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">Search Sightings</h2>
-                <div className="bg-gray-50 p-4 rounded-lg">
+                <h2 className="text-2xl font-bold mb-4 text-white">Search Sightings</h2>
+                <div className="bg-gray-700 p-4 rounded-lg">
                   <input
                     type="text"
                     placeholder="Search by notes, type, location, or date..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                    className="w-full p-3 border border-gray-600 bg-gray-800 text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
                   />
                 </div>
               </section>
 
               {/* Filter Control Panel */}
               <section className="mb-8">
-                <h2 className="text-2xl font-bold mb-4">Filter Control Panel</h2>
-                <div className="bg-gray-50 p-4 rounded-lg">
+                <h2 className="text-2xl font-bold mb-4 text-white">Filter Control Panel</h2>
+                <div className="bg-gray-700 p-4 rounded-lg">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Date Range</label>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">Date Range</label>
                       <select 
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border border-gray-600 bg-gray-800 text-white rounded"
                         value={filters.dateRange}
                         onChange={(e) => handleFilterChange('dateRange', e.target.value)}
                       >
@@ -311,9 +311,9 @@ export default function Home() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Sighting Type</label>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">Sighting Type</label>
                       <select 
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border border-gray-600 bg-gray-800 text-white rounded"
                         value={filters.sightingType}
                         onChange={(e) => handleFilterChange('sightingType', e.target.value)}
                       >
@@ -326,18 +326,18 @@ export default function Home() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Location</label>
+                      <label className="block text-sm font-medium mb-2 text-gray-300">Location</label>
                       <input 
                         type="text" 
                         placeholder="Enter city or state"
-                        className="w-full p-2 border rounded"
+                        className="w-full p-2 border border-gray-600 bg-gray-800 text-white rounded placeholder-gray-400"
                         value={filters.location}
                         onChange={(e) => handleFilterChange('location', e.target.value)}
                       />
                     </div>
                     <div className="flex items-end">
                       <button 
-                        className="w-full bg-black text-white p-2 rounded hover:bg-gray-800"
+                        className="w-full bg-orange-500 text-white p-2 rounded hover:bg-orange-600"
                         onClick={() => {
                           setFilters({
                             dateRange: 'All Time',
@@ -358,53 +358,53 @@ export default function Home() {
               {/* Sightings Table */}
               <section className="mb-8">
                 <div className="flex justify-between items-center mb-4">
-                  <h2 className="text-2xl font-bold">
+                  <h2 className="text-2xl font-bold text-white">
                     Sightings Table
-                    <span className="text-sm font-normal text-gray-600 ml-2">
+                    <span className="text-sm font-normal text-gray-300 ml-2">
                       (Showing {startIndex + 1}-{Math.min(endIndex, filteredSightings.length)} of {filteredSightings.length})
                     </span>
                   </h2>
                 </div>
-                <div className="bg-white border rounded-lg overflow-hidden">
+                <div className="bg-gray-700 border border-gray-600 rounded-lg overflow-hidden">
                   <table className="w-full">
-                    <thead className="bg-gray-50">
+                    <thead className="bg-gray-600">
                       <tr>
                         <th 
-                          className="px-4 py-3 text-left font-medium cursor-pointer hover:bg-gray-100"
+                          className="px-4 py-3 text-left font-medium cursor-pointer hover:bg-gray-500 text-white"
                           onClick={() => handleSort('date')}
                         >
                           Date {getSortIcon('date')}
                         </th>
                         <th 
-                          className="px-4 py-3 text-left font-medium cursor-pointer hover:bg-gray-100"
+                          className="px-4 py-3 text-left font-medium cursor-pointer hover:bg-gray-500 text-white"
                           onClick={() => handleSort('time')}
                         >
                           Time {getSortIcon('time')}
                         </th>
                         <th 
-                          className="px-4 py-3 text-left font-medium cursor-pointer hover:bg-gray-100"
+                          className="px-4 py-3 text-left font-medium cursor-pointer hover:bg-gray-500 text-white"
                           onClick={() => handleSort('type')}
                         >
                           Type {getSortIcon('type')}
                         </th>
                         <th 
-                          className="px-4 py-3 text-left font-medium cursor-pointer hover:bg-gray-100"
+                          className="px-4 py-3 text-left font-medium cursor-pointer hover:bg-gray-500 text-white"
                           onClick={() => handleSort('location')}
                         >
                           Location {getSortIcon('location')}
                         </th>
-                        <th className="px-4 py-3 text-left font-medium">Notes</th>
-                        <th className="px-4 py-3 text-left font-medium">Image</th>
+                        <th className="px-4 py-3 text-left font-medium text-white">Notes</th>
+                        <th className="px-4 py-3 text-left font-medium text-white">Image</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {displaySightings.map((sighting) => (
-                        <tr key={sighting.id} className="border-t">
-                          <td className="px-4 py-3">{sighting.date}</td>
-                          <td className="px-4 py-3">{sighting.time}</td>
-                          <td className="px-4 py-3">{sighting.type}</td>
-                          <td className="px-4 py-3">{sighting.location}</td>
-                          <td className="px-4 py-3 max-w-xs truncate">{sighting.notes}</td>
+                      {displaySightings.map((sighting, index) => (
+                        <tr key={sighting.id} className={`border-t border-gray-600 ${index % 2 === 0 ? 'bg-gray-800' : 'bg-gray-700'}`}>
+                          <td className="px-4 py-3 text-white">{sighting.date}</td>
+                          <td className="px-4 py-3 text-white">{sighting.time}</td>
+                          <td className="px-4 py-3 text-white">{sighting.type}</td>
+                          <td className="px-4 py-3 text-white">{sighting.location}</td>
+                          <td className="px-4 py-3 max-w-xs truncate text-white">{sighting.notes}</td>
                           <td className="px-4 py-3">
                             {sighting.image ? (
                               <img 
@@ -416,7 +416,7 @@ export default function Home() {
                                 }}
                               />
                             ) : (
-                              <div className="w-16 h-12 bg-gray-200 rounded"></div>
+                              <div className="w-16 h-12 bg-gray-600 rounded"></div>
                             )}
                           </td>
                         </tr>
@@ -431,7 +431,7 @@ export default function Home() {
                     <button
                       onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
                       disabled={currentPage === 1}
-                      className="px-3 py-2 border rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                      className="px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600"
                     >
                       Previous
                     </button>
@@ -453,10 +453,10 @@ export default function Home() {
                           <button
                             key={pageNum}
                             onClick={() => setCurrentPage(pageNum)}
-                            className={`px-3 py-2 border rounded ${
+                            className={`px-3 py-2 border border-gray-600 rounded ${
                               currentPage === pageNum 
-                                ? 'bg-black text-white' 
-                                : 'hover:bg-gray-50'
+                                ? 'bg-orange-500 text-white' 
+                                : 'bg-gray-700 text-white hover:bg-gray-600'
                             }`}
                           >
                             {pageNum}
@@ -468,7 +468,7 @@ export default function Home() {
                     <button
                       onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
                       disabled={currentPage === totalPages}
-                      className="px-3 py-2 border rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50"
+                      className="px-3 py-2 border border-gray-600 bg-gray-700 text-white rounded disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-600"
                     >
                       Next
                     </button>
@@ -480,14 +480,14 @@ export default function Home() {
               <section>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h3 className="text-lg font-semibold mb-2">Export Data</h3>
-                    <p className="text-sm text-gray-600 mb-4">
+                    <h3 className="text-lg font-semibold mb-2 text-white">Export Data</h3>
+                    <p className="text-sm text-gray-300 mb-4">
                       Export {filteredSightings.length} filtered sightings to CSV
                     </p>
                   </div>
                   <button
                     onClick={handleExport}
-                    className="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors flex items-center space-x-2"
+                    className="bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors flex items-center space-x-2"
                   >
                     <span>📥</span>
                     <span>Export CSV</span>
@@ -495,9 +495,9 @@ export default function Home() {
                 </div>
                 
                 {filteredSightings.length > 0 && (
-                  <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                    <h4 className="font-medium mb-2">Export Details:</h4>
-                    <ul className="text-sm text-gray-600 space-y-1">
+                  <div className="mt-4 p-4 bg-gray-700 rounded-lg">
+                    <h4 className="font-medium mb-2 text-white">Export Details:</h4>
+                    <ul className="text-sm text-gray-300 space-y-1">
                       <li>• Total records: {filteredSightings.length}</li>
                       {filters.dateRange !== 'All Time' && (
                         <li>• Date range: {filters.dateRange}</li>

@@ -2,12 +2,15 @@
 @import "leaflet/dist/leaflet.css";
 
 :root {
-  --background: #F8F8F8;
-  --foreground: #000000;
+  --background: #1a1a1a;
+  --foreground: #ffffff;
   --primary-black: #000000;
-  --ghost-white: #F8F8F8;
+  --ghost-white: #ffffff;
   --accent-orange: #FF9F40;
   --muted-gray: #6E6E6E;
+  --card-background: #2a2a2a;
+  --card-background-alt: #333333;
+  --border-color: #404040;
 }
 
 @theme inline {
@@ -17,14 +20,16 @@
   --color-ghost-white: var(--ghost-white);
   --color-accent-orange: var(--accent-orange);
   --color-muted-gray: var(--muted-gray);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card-background: var(--card-background);
+  --color-card-background-alt: var(--card-background-alt);
+  --color-border: var(--border-color);
+  --font-sans: var(--font-inter);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
 }
@@ -34,13 +39,26 @@ body {
   height: 400px;
   width: 100%;
   border-radius: 8px;
+  background: #1a1a1a;
 }
 
 .leaflet-popup-content-wrapper {
   border-radius: 8px;
+  background: #2a2a2a;
+  color: #ffffff;
 }
 
 .leaflet-popup-content {
   margin: 8px 12px;
   line-height: 1.4;
+  color: #ffffff;
+}
+
+.leaflet-popup-tip {
+  background: #2a2a2a;
+}
+
+/* Dark theme for map tiles */
+.leaflet-tile {
+  filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
 }

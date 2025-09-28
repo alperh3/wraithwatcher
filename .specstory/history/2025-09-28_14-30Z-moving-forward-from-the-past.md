@@ -855,3 +855,397 @@ The application works with or without Supabase configuration, falling back to CS
 
 ---
 
+_**User (2025-09-28 14:30Z)**_
+
+pushed everything to github, on vercel deployment step, I get this error:
+Error: Function Runtimes must have a valid version, for example `now-php@1.0.0`.
+
+---
+
+_**Assistant (default)**_
+
+Tool use: **read_file**
+
+Read file: /Users/alper/dev/github/h3/wraithwatcher/vercel.json
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/vercel.json</summary>
+
+**Chunk 1**
+Lines added: undefined, lines removed: 10
+
+```diff
+@@ -1,13 +1,3 @@
+  {
+-   "framework": "nextjs",
+-   "buildCommand": "npm run build",
+-   "devCommand": "npm run dev",
+-   "installCommand": "npm install",
+-   "outputDirectory": ".next",
+-   "functions": {
+-     "app/api/**/*.ts": {
+-       "runtime": "nodejs18.x"
+-     }
+-   },
+    "headers": [
+      {
+```
+
+</details>
+
+---
+
+Tool use: **run_terminal_cmd**
+
+```bash
+cd /Users/alper/dev/github/h3/wraithwatcher && git add vercel.json && git commit -m "Fix Vercel deployment configuration" && git push
+```
+
+```
+[main c9d94f1] Fix Vercel deployment configuration
+ 1 file changed, 10 deletions(-)
+To github.com:alperh3/wraithwatcher.git
+   d4e6aae..c9d94f1  main -> main
+
+```
+
+---
+
+## Fixed Vercel deployment configuration
+
+The issue was in `vercel.json`: the `functions` section used an outdated runtime format. Removed the problematic config and kept only the security headers.
+
+### Changes made:
+- Removed `framework`, `buildCommand`, `devCommand`, `installCommand`, `outputDirectory`
+- Removed the `functions` section with the invalid runtime
+- Kept the security headers
+
+### Why this works:
+- Vercel auto-detects Next.js projects
+- No custom function runtime needed
+- Security headers remain
+
+### Next steps:
+1. Push the changes (done)
+2. Redeploy on Vercel
+3. Add environment variables in the Vercel dashboard:
+   - `NEXT_PUBLIC_SUPABASE_URL`
+   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+The deployment should proceed without the runtime error.
+
+---
+
+_**User (2025-09-28 14:30Z)**_
+
+make the app dark theme, similar to the attached screenshot
+
+---
+
+_**Assistant (default)**_
+
+Tool use: **read_file**
+
+Read file: /Users/alper/dev/github/h3/wraithwatcher/app/globals.css
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/globals.css</summary>
+
+**Chunk 1**
+Lines added: 6, lines removed: 3
+
+```diff
+@@ -3,10 +3,13 @@
+  
+  :root {
+-   --background: #F8F8F8;
+-   --foreground: #000000;
++   --background: #1a1a1a;
++   --foreground: #ffffff;
+    --primary-black: #000000;
+-   --ghost-white: #F8F8F8;
++   --ghost-white: #ffffff;
+    --accent-orange: #FF9F40;
+    --muted-gray: #6E6E6E;
++   --card-background: #2a2a2a;
++   --card-background-alt: #333333;
++   --border-color: #404040;
+  }
+  
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/globals.css</summary>
+
+**Chunk 1**
+Lines added: 4, lines removed: 2
+
+```diff
+@@ -21,6 +21,8 @@
+    --color-accent-orange: var(--accent-orange);
+    --color-muted-gray: var(--muted-gray);
+-   --font-sans: var(--font-geist-sans);
+-   --font-mono: var(--font-geist-mono);
++   --color-card-background: var(--card-background);
++   --color-card-background-alt: var(--card-background-alt);
++   --color-border: var(--border-color);
++   --font-sans: var(--font-inter);
+  }
+  
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/globals.css</summary>
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -30,5 +30,5 @@
+    background: var(--background);
+    color: var(--foreground);
+-   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
++   font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/globals.css</summary>
+
+**Chunk 1**
+Lines added: 13, lines removed: undefined
+
+```diff
+@@ -40,13 +40,26 @@
+    width: 100%;
+    border-radius: 8px;
++   background: #1a1a1a;
+  }
+  
+  .leaflet-popup-content-wrapper {
+    border-radius: 8px;
++   background: #2a2a2a;
++   color: #ffffff;
+  }
+  
+  .leaflet-popup-content {
+    margin: 8px 12px;
+    line-height: 1.4;
++   color: #ffffff;
++ }
++ 
++ .leaflet-popup-tip {
++   background: #2a2a2a;
++ }
++ 
++ /* Dark theme for map tiles */
++ .leaflet-tile {
++   filter: brightness(0.6) invert(1) contrast(3) hue-rotate(200deg) saturate(0.3) brightness(0.7);
+  }
+  
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/page.tsx</summary>
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -197,5 +197,5 @@
+  
+    return (
+-     <div className="min-h-screen bg-gray-100">
++     <div className="min-h-screen bg-gray-900">
+        {/* Header */}
+        <header className="bg-black text-white p-4">
+```
+
+**Chunk 2**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -212,5 +212,5 @@
+                className={`px-4 py-2 rounded ${
+                  activeTab === 'sightings' 
+-                   ? 'bg-white text-black' 
++                   ? 'bg-orange-500 text-white' 
+                    : 'hover:bg-gray-800'
+                }`}
+```
+
+**Chunk 3**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -222,5 +222,5 @@
+                className={`px-4 py-2 rounded ${
+                  activeTab === 'post' 
+-                   ? 'bg-white text-black' 
++                   ? 'bg-orange-500 text-white' 
+                    : 'hover:bg-gray-800'
+                }`}
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/page.tsx</summary>
+
+**Chunk 1**
+Lines added: 1, lines removed: 1
+
+```diff
+@@ -234,5 +234,5 @@
+        {/* Main Content */}
+        <main className="max-w-7xl mx-auto p-6">
+-         <div className="bg-white rounded-lg shadow-lg p-6">
++         <div className="bg-gray-800 rounded-lg shadow-lg p-6">
+            {loading && (
+              <div className="text-center py-8">
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/page.tsx</summary>
+
+**Chunk 1**
+Lines added: 3, lines removed: 3
+
+```diff
+@@ -237,12 +237,12 @@
+            {loading && (
+              <div className="text-center py-8">
+-               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black mx-auto"></div>
+-               <p className="mt-4 text-gray-600">Loading sightings data...</p>
++               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-500 mx-auto"></div>
++               <p className="mt-4 text-gray-300">Loading sightings data...</p>
+              </div>
+            )}
+  
+            {error && (
+              <div className="text-center py-8">
+-               <p className="text-red-600">Error: {error}</p>
++               <p className="text-red-400">Error: {error}</p>
+              </div>
+            )}
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/page.tsx</summary>
+
+**Chunk 1**
+Lines added: 10, lines removed: 10
+
+```diff
+@@ -252,17 +252,17 @@
+                {/* Sightings Stats */}
+                <section className="mb-8">
+-                 <h2 className="text-2xl font-bold mb-4">Sightings Stats</h2>
++                 <h2 className="text-2xl font-bold mb-4 text-white">Sightings Stats</h2>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+-                   <div className="bg-gray-50 p-4 rounded-lg">
+-                     <h3 className="font-semibold text-gray-600">Total Sightings</h3>
+-                     <p className="text-2xl font-bold">{stats.totalSightings.toLocaleString()}</p>
++                   <div className="bg-gray-700 p-4 rounded-lg">
++                     <h3 className="font-semibold text-gray-300">Total Sightings</h3>
++                     <p className="text-2xl font-bold text-white">{stats.totalSightings.toLocaleString()}</p>
+                    </div>
+-                   <div className="bg-gray-50 p-4 rounded-lg">
+-                     <h3 className="font-semibold text-gray-600">Most Recent Sighting</h3>
+-                     <p className="text-2xl font-bold">{stats.mostRecent}</p>
++                   <div className="bg-gray-700 p-4 rounded-lg">
++                     <h3 className="font-semibold text-gray-300">Most Recent Sighting</h3>
++                     <p className="text-2xl font-bold text-white">{stats.mostRecent}</p>
+                    </div>
+-                   <div className="bg-gray-50 p-4 rounded-lg">
+-                     <h3 className="font-semibold text-gray-600">Most Ghostly City</h3>
+-                     <p className="text-2xl font-bold">{stats.mostGhostlyCity}</p>
++                   <div className="bg-gray-700 p-4 rounded-lg">
++                     <h3 className="font-semibold text-gray-300">Most Ghostly City</h3>
++                     <p className="text-2xl font-bold text-white">{stats.mostGhostlyCity}</p>
+                    </div>
+                  </div>
+```
+
+</details>
+
+---
+
+Tool use: **search_replace**
+
+
+<details><summary>Edit file: /Users/alper/dev/github/h3/wraithwatcher/app/page.tsx</summary>
+
+**Chunk 1**
+Lines added: 2, lines removed: 2
+
+```diff
+@@ -271,7 +271,7 @@
+                {/* Sightings Map */}
+                <section className="mb-8">
+-                 <h2 className="text-2xl font-bold mb-4">
++                 <h2 className="text-2xl font-bold mb-4 text-white">
+                    Sightings Map 
+-                   <span className="text-sm font-normal text-gray-600 ml-2">
++                   <span className="text-sm font-normal text-gray-300 ml-2">
+                      ({filteredSightings.length} sightings)
+                    </span>
+```
+
+</details>
+
+---
+
+
+
+---
+

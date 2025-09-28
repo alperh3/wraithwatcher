@@ -122,41 +122,41 @@ export default function PostSighting() {
   };
 
   if (submitted) {
-    return (
-      <div className="min-h-screen bg-gray-100">
-        {/* Header */}
-        <header className="bg-black text-white p-4">
-          <div className="max-w-7xl mx-auto flex justify-between items-center">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <span className="text-black text-lg">👻</span>
-              </div>
-              <h1 className="text-xl font-bold">WraithWatchers</h1>
+  return (
+    <div className="min-h-screen bg-gray-900">
+      {/* Header */}
+      <header className="bg-black text-white p-4">
+        <div className="max-w-7xl mx-auto flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+              <span className="text-black text-lg">👻</span>
             </div>
-            <nav className="flex space-x-4">
-              <a
-                href="/"
-                className="px-4 py-2 rounded hover:bg-gray-800"
-              >
-                Sightings Map
-              </a>
-              <button
-                className="px-4 py-2 rounded bg-white text-black"
-              >
-                Post a Sighting
-              </button>
-            </nav>
+            <h1 className="text-xl font-bold">WraithWatchers</h1>
           </div>
-        </header>
+          <nav className="flex space-x-4">
+            <a
+              href="/"
+              className="px-4 py-2 rounded hover:bg-gray-800"
+            >
+              Sightings Map
+            </a>
+            <button
+              className="px-4 py-2 rounded bg-orange-500 text-white"
+            >
+              Post a Sighting
+            </button>
+          </nav>
+        </div>
+      </header>
 
         {/* Confirmation Content */}
         <main className="max-w-4xl mx-auto p-6">
-          <div className="bg-white rounded-lg shadow-lg p-8 text-center">
-            <h1 className="text-4xl font-bold mb-4">Thank You!</h1>
-            <p className="text-xl text-gray-600 mb-8">May you be clear of scary spirits!</p>
+          <div className="bg-gray-800 rounded-lg shadow-lg p-8 text-center">
+            <h1 className="text-4xl font-bold mb-4 text-white">Thank You!</h1>
+            <p className="text-xl text-gray-300 mb-8">May you be clear of scary spirits!</p>
             
             <div className="flex justify-center mb-8">
-              <div className="w-64 h-64 bg-gray-100 rounded-lg flex items-center justify-center">
+              <div className="w-64 h-64 bg-gray-700 rounded-lg flex items-center justify-center">
                 <div className="text-6xl">🕯️</div>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function PostSighting() {
             <div className="space-y-4">
               <a
                 href="/"
-                className="inline-block bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-colors"
+                className="inline-block bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors"
               >
                 View All Sightings
               </a>
@@ -184,7 +184,7 @@ export default function PostSighting() {
                     setSelectedImage(null);
                     setImagePreview(null);
                   }}
-                  className="text-blue-600 hover:text-blue-800 underline"
+                  className="text-orange-400 hover:text-orange-300 underline"
                 >
                   Post Another Sighting
                 </button>
@@ -204,7 +204,7 @@ export default function PostSighting() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-gray-900">
       {/* Header */}
       <header className="bg-black text-white p-4">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -222,7 +222,7 @@ export default function PostSighting() {
               Sightings Map
             </a>
             <button
-              className="px-4 py-2 rounded bg-white text-black"
+              className="px-4 py-2 rounded bg-orange-500 text-white"
             >
               Post a Sighting
             </button>
@@ -232,9 +232,9 @@ export default function PostSighting() {
 
       {/* Main Content */}
       <main className="max-w-4xl mx-auto p-6">
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <h1 className="text-3xl font-bold mb-2">Post a Sighting</h1>
-          <p className="text-gray-600 mb-8">
+        <div className="bg-gray-800 rounded-lg shadow-lg p-6">
+          <h1 className="text-3xl font-bold mb-2 text-white">Post a Sighting</h1>
+          <p className="text-gray-300 mb-8">
             Did you spot a spirit? Post information below so that our community can stand vigilant!
           </p>
 
@@ -242,7 +242,7 @@ export default function PostSighting() {
             {/* Date and Time */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label htmlFor="date" className="block text-sm font-medium mb-2">
+                <label htmlFor="date" className="block text-sm font-medium mb-2 text-gray-300">
                   Date of Sighting
                 </label>
                 <input
@@ -252,11 +252,11 @@ export default function PostSighting() {
                   value={formData.date}
                   onChange={handleInputChange}
                   required
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                  className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 />
               </div>
               <div>
-                <label htmlFor="time" className="block text-sm font-medium mb-2">
+                <label htmlFor="time" className="block text-sm font-medium mb-2 text-gray-300">
                   Time of Sighting
                 </label>
                 <select
@@ -265,7 +265,7 @@ export default function PostSighting() {
                   value={formData.time}
                   onChange={handleInputChange}
                   required
-                  className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                  className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
                 >
                   <option value="">Select time of day</option>
                   <option value="Dawn">Dawn</option>
@@ -280,7 +280,7 @@ export default function PostSighting() {
 
             {/* Sighting Type */}
             <div>
-              <label htmlFor="type" className="block text-sm font-medium mb-2">
+              <label htmlFor="type" className="block text-sm font-medium mb-2 text-gray-300">
                 Type of Sighting
               </label>
               <select
@@ -289,7 +289,7 @@ export default function PostSighting() {
                 value={formData.type}
                 onChange={handleInputChange}
                 required
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent"
               >
                 <option value="">Select sighting type</option>
                 <option value="Headless Spirit">Headless Spirit</option>
@@ -305,16 +305,16 @@ export default function PostSighting() {
 
             {/* Location Map */}
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-sm font-medium mb-2 text-gray-300">
                 Where Were You Exactly? (Place a Pin) *
               </label>
               <LocationMap onLocationSelect={handleLocationSelect} />
               {formData.location ? (
-                <p className="mt-2 text-sm text-green-600">
+                <p className="mt-2 text-sm text-green-400">
                   ✓ Selected: {formData.location}
                 </p>
               ) : (
-                <p className="mt-2 text-sm text-red-600">
+                <p className="mt-2 text-sm text-red-400">
                   ⚠ Please click on the map to select a location
                 </p>
               )}
@@ -322,7 +322,7 @@ export default function PostSighting() {
 
             {/* Notes */}
             <div>
-              <label htmlFor="notes" className="block text-sm font-medium mb-2">
+              <label htmlFor="notes" className="block text-sm font-medium mb-2 text-gray-300">
                 Sighting Notes
               </label>
               <textarea
@@ -333,18 +333,18 @@ export default function PostSighting() {
                 required
                 rows={4}
                 placeholder="Describe what you saw, heard, or experienced..."
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent"
+                className="w-full p-3 border border-gray-600 bg-gray-700 text-white rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-transparent placeholder-gray-400"
               />
             </div>
 
             {/* Image Upload */}
             <div>
-              <label className="block text-sm font-medium mb-2">
+              <label className="block text-sm font-medium mb-2 text-gray-300">
                 Upload Image (Optional)
               </label>
               <div className="space-y-4">
                 {!imagePreview ? (
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
+                  <div className="border-2 border-dashed border-gray-600 rounded-lg p-6 text-center hover:border-gray-500 transition-colors">
                     <input
                       type="file"
                       accept="image/*"
@@ -357,10 +357,10 @@ export default function PostSighting() {
                       className="cursor-pointer flex flex-col items-center space-y-2"
                     >
                       <div className="text-4xl">📷</div>
-                      <div className="text-gray-600">
-                        <span className="text-blue-600 hover:text-blue-800">Click to upload</span> or drag and drop
+                      <div className="text-gray-300">
+                        <span className="text-orange-500 hover:text-orange-400">Click to upload</span> or drag and drop
                       </div>
-                      <div className="text-sm text-gray-500">
+                      <div className="text-sm text-gray-400">
                         PNG, JPG, GIF up to 5MB
                       </div>
                     </label>
@@ -371,7 +371,7 @@ export default function PostSighting() {
                       <img
                         src={imagePreview}
                         alt="Preview"
-                        className="w-full h-64 object-cover rounded-lg border"
+                        className="w-full h-64 object-cover rounded-lg border border-gray-600"
                       />
                       <button
                         type="button"
@@ -381,7 +381,7 @@ export default function PostSighting() {
                         ×
                       </button>
                     </div>
-                    <div className="text-sm text-gray-600">
+                    <div className="text-sm text-gray-300">
                       <p><strong>File:</strong> {selectedImage?.name}</p>
                       <p><strong>Size:</strong> {(selectedImage?.size! / 1024 / 1024).toFixed(2)} MB</p>
                     </div>
@@ -395,12 +395,12 @@ export default function PostSighting() {
               <button
                 type="submit"
                 disabled={isSubmitting || !formData.lat || !formData.lng}
-                className="w-full bg-black text-white py-4 px-6 rounded-lg text-lg font-medium hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                className="w-full bg-orange-500 text-white py-4 px-6 rounded-lg text-lg font-medium hover:bg-orange-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isSubmitting ? 'Posting Your Sighting...' : 'Post Your Sighting'}
               </button>
               {(!formData.lat || !formData.lng) && (
-                <p className="mt-2 text-sm text-red-600 text-center">
+                <p className="mt-2 text-sm text-red-400 text-center">
                   Please select a location on the map to enable submission
                 </p>
               )}
